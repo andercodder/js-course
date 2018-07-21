@@ -58,12 +58,12 @@ body {
     letter-spacing: 2px;
     font-weight: 100;
     margin-top: 20px;
-    margin-bottom: 10px;icon
-    position: relative;icon
-}icon
-icon
-.player-score {icon
-    text-align: center;icon
+    margin-bottom: 10px;
+    position: relative;
+}
+
+.player-score {
+    text-align: center;
     font-size: 80px;
     font-weight: 100;
     color: #EB4D4D;
