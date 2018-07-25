@@ -38,9 +38,41 @@ document.querySelector('.btn-roll').addEventListener('click', function(){
        //Add score
        roundScore += dice;
        document.querySelector('#current-' + activePlayer).textContent = roundScore;
-   }else{
+   }else{ 
        //Next Player
-       activePlayer === 0 ? activePlayer = 1 : activePlayer = 0; // if active player is 0 i want it to be 1 ao contrario eu quero que ele seje zero
+       nextPlayer();
+
+
+   }
+   
+});
+
+document.querySelector('.btn-hold').addEventListener('click', function(){
+    //Add CURRENT score to GlOBAL score
+    //console.log(scores[activePlayer]);
+    scores[activePlayer] += roundScore;
+    //console.log(scores[activePlayer]);
+
+    //Update the UI
+    document.querySelector('#score-' +  activePlayer).textContent = scores[activePlayer];
+
+    //check if player won the game
+    if(scores[activePlayer] >= 20){
+        document.querySelector('#name-' + activePlayer).textContent = 'Winner!';
+        document.querySelector('.dice').style.display = 'none';
+        document.querySelector('.player-' + activePlayer + '-panel').classList.add('winner');
+        document.querySelector('.player-' + activePlayer + '-panel').classList.remove('active');
+
+    }else{
+        //Next player 
+    nextPlayer();
+    }
+    
+})
+
+
+function nextPlayer(){
+    activePlayer === 0 ? activePlayer = 1 : activePlayer = 0; // if active player is 0 i want it to be 1 ao contrario eu quero que ele seje zero
        roundScore = 0;
        
        //update the score
@@ -51,11 +83,7 @@ document.querySelector('.btn-roll').addEventListener('click', function(){
        document.querySelector('.player-1-panel').classList.toggle('active');
 
        document.querySelector('.dice').style.display = 'none';
-
-
-   }
-   
-});
+}
 
 /* document.querySelector('#current-' + activePlayer).textContent = dice; //getter
 //document.querySelectoe('#current-' + activePlayer).innerHTML = '<em>' + dice +'</em>';
