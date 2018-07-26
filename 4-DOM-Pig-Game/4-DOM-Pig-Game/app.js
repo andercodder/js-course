@@ -9,14 +9,16 @@ GAME RULES:
 
 */
 
-var scores, roundScore, activePlayer;
+var scores, roundScore, activePlayer, gamePlaying;
 
 init();
 
 
 document.querySelector('.btn-roll').addEventListener('click', function () {
 
-    //1.random number
+    if(gamePlaying){
+
+       //1.random number
     var dice = Math.floor(Math.random() * 6) + 1;
 
     //2.display the result
@@ -33,12 +35,15 @@ document.querySelector('.btn-roll').addEventListener('click', function () {
         //Next Player
         nextPlayer();
 
-
+        }
     }
-
+ 
 });
 
 document.querySelector('.btn-hold').addEventListener('click', function () {
+    if(gamePlaying){
+
+   
     //Add CURRENT score to GlOBAL score
     //console.log(scores[activePlayer]);
     scores[activePlayer] += roundScore;
@@ -53,16 +58,19 @@ document.querySelector('.btn-hold').addEventListener('click', function () {
         document.querySelector('.dice').style.display = 'none';
         document.querySelector('.player-' + activePlayer + '-panel').classList.add('winner');
         document.querySelector('.player-' + activePlayer + '-panel').classList.remove('active');
+        gamePlaying = false;
 
     } else {
         //Next player 
         nextPlayer();
+         }
     }
 
 })
 
 
 function nextPlayer() {
+   
     activePlayer === 0 ? activePlayer = 1 : activePlayer = 0; // if active player is 0 i want it to be 1 ao contrario eu quero que ele seje zero
     roundScore = 0;
 
@@ -84,6 +92,7 @@ function init() {
     roundScore = 0;
     activePlayer = 0;
 
+     gamePlaying = true;
 
     document.querySelector('.dice').style.display = 'none'; //setter -> when we set something
 
