@@ -86,7 +86,7 @@ console.log(obj2.age);
 
 */
  //FUNCTIONS lecture 62
-
+/*
  var years = [1990, 1965, 1937, 2005, 1998, 1993];
 
  function arrayCalc(arr, fn){
@@ -151,3 +151,7 @@ designerQuestion('tONI');
 designerQuestion('belo');
 
 interviewQuestion('teacher')('Rosa');
+
+*/
+
+
